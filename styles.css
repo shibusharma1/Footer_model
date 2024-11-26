@@ -1,0 +1,138 @@
+/* Footer Styles */
+.promo-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f36d00;
+    color: #ffffff;
+    padding: 0.5rem 5rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    flex-wrap: wrap;
+}
+
+/* Promo Content */
+.promo-content {
+    flex: 1;
+    text-align: left;
+    margin-bottom: 0.6rem;
+}
+
+.promo-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.promo-text {
+    font-size: 16px;
+    margin: 0;
+}
+
+.coupon-code {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Countdown Timer */
+.countdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    padding-right: 1rem;
+}
+
+.time-box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    margin: 0 3px;
+    color: #ffffff;
+    background-color: green;
+    border-radius: 50%;
+    padding: 0.16rem;
+}
+
+.time-box:hover {
+    box-shadow: 0 10px 10px rgba(240, 241, 240, 0.3);
+    padding: 0.18rem;
+
+}
+
+.time-box span {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 1px;
+}
+
+.time-box small {
+    font-size: 12px;
+    margin-top: -4px;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 1rem;
+    padding: 6px;
+    background: #ffffff;
+    color: #f36d00;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.close-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .promo-footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem 2rem;
+    }
+
+    .promo-content {
+        margin-bottom: 1rem;
+    }
+
+    .countdown {
+        padding-right: 0;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .time-box {
+        height: 40px;
+        width: 40px;
+        margin: 0 5px;
+    }
+
+    .time-box span {
+        font-size: 16px;
+    }
+
+    .time-box small {
+        font-size: 10px;
+    }
+}

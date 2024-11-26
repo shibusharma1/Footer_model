@@ -1,0 +1,69 @@
+ Run migration
+ php artisan make:migration create_promotions_table
+
+
+code for model
+Schema::create('promotions', function (Blueprint $table) {
+    $table->id();
+    $table->string('title');
+    $table->string('coupon_code')->nullable();
+    $table->integer('discount_percentage')->nullable();
+    $table->dateTime('start_time');
+    $table->dateTime('end_time');
+    $table->timestamps();
+});
+
+
+
+
+
+
+promotion model
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Promotion extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'title', 
+        'coupon_code', 
+        'discount_percentage', 
+        'start_time', 
+        'end_time'
+    ];
+}
+
+
+blade file
+<div class="alert alert-warning text-center">
+    <h4>{{ $promotion->title }}</h4>
+    <p>Extra {{ $promotion->discount_percentage }}% Discount using coupon code <strong>{{ $promotion->coupon_code }}</strong></p>
+    <div id="countdown-timer" data-end="{{ $promotion->end_time }}"></div>
+</div>
+
+<script>
+    // Countdown Timer
+    const endTime = new Date(document.getElementById('countdown-timer').dataset.end).getTime();
+    const timerInterval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = endTime - now;
+
+        if (distance < 0) {
+            clearInterval(timerInterval);
+            document.getElementById('countdown-timer').innerHTML = "Expired";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('countdown-timer').innerHTML = 
+            `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+    }, 1000);
+</script>
